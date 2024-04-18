@@ -38,7 +38,8 @@
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 android:textStyle="bold" />
-             />
+
+
         </LinearLayout>
 
 
@@ -51,59 +52,22 @@
     </RelativeLayout>
 
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_margin="20dp"
-        android:orientation="vertical"
-        android:padding="20dp"
-        tools:layout_editor_absoluteX="20dp"
-        tools:layout_editor_absoluteY="16dp">
-
-
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="10dp"
-            android:background="@drawable/bg_tour"
             android:orientation="vertical"
-            android:padding="40dp">
+            tools:ignore="MissingConstraints">
 
-            <TextView
-                android:id="@+id/tvEventDate"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="10 JUNE"
-                android:textColor="#000"
-                android:textSize="18sp" />
-
-            <TextView
-                android:id="@+id/tvEventTitle"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="International Band Mu..."
-                android:textColor="#000"
-                android:textSize="16sp" />
-
-            <TextView
-                android:id="@+id/tvEventDetails"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="+20 Going - 36 Guild Street London, UK"
-                android:textColor="#555"
-                android:textSize="14sp" />
-
-            <TextView
-                android:id="@+id/tvEventPrice"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="342.49 x 255"
-                android:textColor="#555"
-                android:textSize="14sp" />
+            <androidx.recyclerview.widget.RecyclerView
+                android:paddingTop="25dp"
+                android:id="@+id/rcyTour"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginTop="40dp"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                tools:itemCount="30"
+                tools:listitem="@layout/item_tour" />
         </LinearLayout>
-
-    </LinearLayout>
-
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         style="@style/AppStyleBottomNavigation"
@@ -117,6 +81,8 @@
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/home_menu" />
+
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

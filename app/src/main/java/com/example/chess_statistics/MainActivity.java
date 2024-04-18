@@ -32,13 +32,10 @@ public class MainActivity extends AppCompatActivity {
         User user = new User(strUsername, strPassword);
         if(user.isValidEmail() && user.isVaildPassword()) {
             Toast.makeText(this, "Chinh Xac", Toast.LENGTH_SHORT).show();
-//            FragmentRating fragmentRating = new FragmentRating();
-//            getSupportFragmentManager().beginTransaction()
-//                    .replace(R.layout.activity_main, fragmentRating)
-//                    .commit();
+
         }
         else {
             Toast.makeText(this, "Khong chinh xac", Toast.LENGTH_SHORT).show();
         }
-        }
     }
+}
