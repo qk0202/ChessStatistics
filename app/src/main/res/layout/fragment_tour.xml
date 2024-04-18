@@ -34,7 +34,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Chess"
+                android:text="Tourments"
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -50,65 +50,59 @@
             android:src="@drawable/ic_search" />
     </RelativeLayout>
 
-    <ScrollView
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        >
+        android:layout_margin="20dp"
+        android:orientation="vertical"
+        android:padding="20dp"
+        tools:layout_editor_absoluteX="20dp"
+        tools:layout_editor_absoluteY="16dp">
+
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/bg_tour"
             android:orientation="vertical"
-            android:padding="16dp"
-            android:layout_margin="100dp">
+            android:padding="40dp">
 
-
-            <!-- Mỗi card sự kiện sẽ được định nghĩa trong một layout riêng -->
-            <!-- Đây là ví dụ về một card sự kiện -->
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvEventDate"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_tour"
-                android:padding="16dp"
-                android:orientation="vertical"
-                android:layout_marginBottom="10dp">
+                android:text="10 JUNE"
+                android:textColor="#000"
+                android:textSize="18sp" />
 
-                <TextView
-                    android:id="@+id/tvEventDate"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="10 JUNE"
-                    android:textSize="18sp"
-                    android:textColor="#000" />
+            <TextView
+                android:id="@+id/tvEventTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="International Band Mu..."
+                android:textColor="#000"
+                android:textSize="16sp" />
 
-                <TextView
-                    android:id="@+id/tvEventTitle"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="International Band Mu..."
-                    android:textSize="16sp"
-                    android:textColor="#000" />
+            <TextView
+                android:id="@+id/tvEventDetails"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="+20 Going - 36 Guild Street London, UK"
+                android:textColor="#555"
+                android:textSize="14sp" />
 
-                <TextView
-                    android:id="@+id/tvEventDetails"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="+20 Going - 36 Guild Street London, UK"
-                    android:textSize="14sp"
-                    android:textColor="#555" />
-
-                <TextView
-                    android:id="@+id/tvEventPrice"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="342.49 x 255"
-                    android:textSize="14sp"
-                    android:textColor="#555" />
-            </LinearLayout>
-
-
+            <TextView
+                android:id="@+id/tvEventPrice"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="342.49 x 255"
+                android:textColor="#555"
+                android:textSize="14sp" />
         </LinearLayout>
-    </ScrollView>
+
+    </LinearLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"

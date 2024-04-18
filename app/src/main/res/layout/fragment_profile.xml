@@ -22,8 +22,6 @@
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:src="@drawable/ic_app" />
-
-
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -34,7 +32,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Tourments"
+                android:text="Profile"
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 android:textStyle="bold" />
@@ -48,62 +46,6 @@
             android:layout_centerVertical="true"
             android:src="@drawable/ic_search" />
     </RelativeLayout>
-
-    <ScrollView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:layout_editor_absoluteX="0dp"
-        tools:layout_editor_absoluteY="0dp">
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="25dp"
-            android:layout_marginTop="50dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="8dp"
-                android:background="@drawable/tour1"
-                android:orientation="vertical">
-                <TextView
-                    android:id="@+id/tvEventDate"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="10 JUNE"
-                    android:textSize="18sp"
-                    android:textColor="#000" />
-
-                <TextView
-                    android:id="@+id/tvEventTitle"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="International Band Mu..."
-                    android:textSize="16sp"
-                    android:textColor="#000" />
-
-                <TextView
-                    android:id="@+id/tvEventDetails"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="+20 Going - 36 Guild Street London, UK"
-                    android:textSize="14sp"
-                    android:textColor="#555" />
-
-                <TextView
-                    android:id="@+id/tvEventPrice"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="342.49 x 255"
-                    android:textSize="14sp"
-                    android:textColor="#555" />
-            </LinearLayout>
-        </LinearLayout>
-
-
-    </ScrollView>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
