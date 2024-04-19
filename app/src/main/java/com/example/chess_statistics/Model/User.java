@@ -1,4 +1,4 @@
-package com.example.chess_statistics;
+package com.example.chess_statistics.Model;
 
 import android.text.TextUtils;
 import android.util.Patterns;

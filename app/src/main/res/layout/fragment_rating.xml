@@ -50,11 +50,19 @@
 
 
             <ImageView
+                android:id="@+id/icSearch"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
                 android:src="@drawable/ic_search" />
+            <EditText
+                android:id="@+id/searchEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="Search..."
+                android:visibility="gone" />
+
         </RelativeLayout>
 
         <androidx.recyclerview.widget.RecyclerView
