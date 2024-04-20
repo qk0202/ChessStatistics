@@ -4,15 +4,31 @@ public class Player {
     private int id;
     private String name;
     private int point;
-    private String type;
-    private byte[] flag;
-    private byte[] image;
+
+    private String avatar;
+
+    private String flag;
+    private TypeBlitz typeBlitz;
+
+    private TypeCorr typeCorr;
+    private TypeClassical typeClassical;
     private int rank;
     private int win;
     private int lost;
+
+    public  Player(){}
     // Constructor
-    public Player() {
+    public Player(int id, String name, int point, String avatar, String flag, int rank, int win, int lost) {
+        this.id = id;
+        this.name = name;
+        this.point = point;
+        this.avatar = avatar;
+        this.flag = flag;
+        this.rank = rank;
+        this.win = win;
+        this.lost = lost;
     }
+
 
     // Getter and setter methods
 
@@ -40,29 +56,6 @@ public class Player {
         this.point = point;
     }
 
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public byte[] getFlag() {
-        return flag;
-    }
-
-    public void setFlag(byte[] flag) {
-        this.flag = flag;
-    }
-
-    public byte[] getImage() {
-        return image;
-    }
-
-    public void setImage(byte[] image) {
-        this.image = image;
-    }
 
     public int getRank() {
         return rank;
@@ -88,4 +81,43 @@ public class Player {
         this.lost = lost;
     }
 
+    public String getAvatar() {
+        return avatar;
+    }
+
+    public void setAvatar(String avatar) {
+        this.avatar = avatar;
+    }
+
+    public String getFlag() {
+        return flag;
+    }
+
+    public void setFlag(String flag) {
+        this.flag = flag;
+    }
+
+    public TypeBlitz getTypeBlitz() {
+        return typeBlitz;
+    }
+
+    public void setTypeBlitz(TypeBlitz typeBlitz) {
+        this.typeBlitz = typeBlitz;
+    }
+
+    public TypeCorr getTypeCorr() {
+        return typeCorr;
+    }
+
+    public void setTypeCorr(TypeCorr typeCorr) {
+        this.typeCorr = typeCorr;
+    }
+
+    public TypeClassical getTypeClassical() {
+        return typeClassical;
+    }
+
+    public void setTypeClassical(TypeClassical typeClassical) {
+        this.typeClassical = typeClassical;
+    }
 }

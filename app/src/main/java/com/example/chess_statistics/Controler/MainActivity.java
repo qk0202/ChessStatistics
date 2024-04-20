@@ -23,11 +23,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        playerDatabaseHelper = new PlayerDatabaseHelper(this);
 
         editUsename = findViewById(R.id.editUsername);
         editPassword = findViewById(R.id.editPassword);
         btnLogin = findViewById(R.id.btnLogin);
+        Intent intent = new Intent(MainActivity.this, FragmentActivity.class);
+        startActivity(intent);
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
