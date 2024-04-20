@@ -38,8 +38,6 @@ public class FragmentRating extends Fragment implements RatingAdapter.OnClickIte
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_rating, container, false);
-        ImageView searchIcon = view.findViewById(R.id.icSearch);
-        final EditText searchEditText = view.findViewById(R.id.searchEditText);
 
         //list type
         RecyclerView tcyType = view.findViewById(R.id.rcyTypeChess);
@@ -50,26 +48,7 @@ public class FragmentRating extends Fragment implements RatingAdapter.OnClickIte
         RecyclerView recyclerView = view.findViewById(R.id.rcyPlayer);
         ratingAdapter = new RatingAdapter(getContext(), setupData(),this);
         recyclerView.setAdapter(ratingAdapter);
-
-
-        searchIcon.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                searchEditText.setVisibility(View.VISIBLE);
-            }
-        });
-
-        searchEditText.setOnEditorActionListener(new TextView.OnEditorActionListener() {
-            @Override
-            public boolean onEditorAction(TextView v, int actionId, KeyEvent event) {
-                if (actionId == EditorInfo.IME_ACTION_SEARCH) {
-                    String query = searchEditText.getText().toString().trim();
-                    performSearch(query);
-                    return true;
-                }
-                return false;
-            }
-        });
+        
 
 
         return view;
