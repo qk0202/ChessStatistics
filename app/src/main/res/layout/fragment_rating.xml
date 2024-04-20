@@ -81,6 +81,7 @@
                 android:layout_height="match_parent"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                 tools:itemCount="10"
+                android:orientation="vertical"
                 android:layout_marginTop="16dp"
                 tools:listitem="@layout/item_player" />
         </LinearLayout>

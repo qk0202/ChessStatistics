@@ -18,18 +18,29 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
     private static final int DATABASE_VERSION = 1;
 
     // Tên bảng và các cột
-    private static final String TABLE_PLAYERS = "players";
+    private static final String TABLE_PLAYERS = "Player";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
+
     private static final String COLUMN_POINT = "point";
-    private static final String COLUMN_PREF = "pref";
+    private static final String COLUMN_AVATAR = "avatar";
+
+    private static final String COLUMN_FLAG = "flag";
+    private static final String COLUMN_RANK = "rank";
+    private static final String COLUMN_WIN = "win";
+
+    private static final String COLUMN_LOST = "lost";
 
     // Câu lệnh tạo bảng
-    private static final String CREATE_PLAYERS_TABLE = "CREATE TABLE " + TABLE_PLAYERS + "("
+    private static final String CREATE_PLAYERS_TABLE = "CREATE TABLE if not exists " + TABLE_PLAYERS + "("
             + COLUMN_ID + " INTEGER PRIMARY KEY,"
-            + COLUMN_NAME + " TEXT,"
+            + COLUMN_NAME + "TEXT,"
             + COLUMN_POINT + " INTEGER,"
-            + COLUMN_PREF + " TEXT"
+            + COLUMN_AVATAR + "STRING,"
+            + COLUMN_FLAG + "STRING,"
+            + COLUMN_RANK + " INTEGER,"
+            + COLUMN_WIN + "INTEGER,"
+            + COLUMN_LOST + "INTEGER"
             + ")";
 
     public PlayerDatabaseHelper(Context context) {
@@ -57,7 +68,6 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, player.getName());
         values.put(COLUMN_POINT, player.getPoint());
-        values.put(COLUMN_PREF, player.getType());
 
         // Chèn hàng mới
         db.insert(TABLE_PLAYERS, null, values);
@@ -71,7 +81,6 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, player.getName());
         values.put(COLUMN_POINT, player.getPoint());
-        values.put(COLUMN_PREF, player.getType());
 
         // Cập nhật hàng
         db.update(TABLE_PLAYERS, values, COLUMN_ID + " = ?",
@@ -88,8 +97,8 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
     }
 
     // Lấy tất cả người chơi từ cơ sở dữ liệu
-    public List<Player> getAllPlayers() {
-        List<Player> playersList = new ArrayList<>();
+    public ArrayList<Player> getAllPlayers() {
+        ArrayList<Player> playersList = new ArrayList<>();
 
         String selectQuery = "SELECT  * FROM " + TABLE_PLAYERS;
 
@@ -103,7 +112,11 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
                 player.setId(Integer.parseInt(cursor.getString(0)));
                 player.setName(cursor.getString(1));
                 player.setPoint(cursor.getInt(2));
-                player.setType(cursor.getString(3));
+                player.setAvatar(cursor.getString(3));
+                player.setFlag(cursor.getString(4));
+                player.setRank(cursor.getInt(5));
+                player.setWin(cursor.getInt(6));
+                player.setLost(cursor.getInt(7));
                 playersList.add(player);
             } while (cursor.moveToNext());
         }
