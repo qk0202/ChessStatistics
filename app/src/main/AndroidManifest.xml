@@ -27,6 +27,38 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".Controler.Profile.ResultsearchActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.chess_statistics.ACTION_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Controler.Profile.ProfiledetailActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.chess_statistics.ACTION_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Controler.Tour.RoundActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.chess_statistics.ACTION_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Controler.Tour.MatchlistActivity"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="com.example.chess_statistics.ACTION_VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
     </application>
 

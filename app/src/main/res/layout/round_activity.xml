@@ -7,6 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_home"
+    tools:context=".Controler.Tour.RoundActivity"
     >
 
     <RelativeLayout
@@ -33,16 +34,26 @@
             android:orientation="vertical">
 
             <TextView
-                android:id="@+id/nameRound"
+                android:id="@+id/nameTour"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="ROUND A"
+                android:text="Chess Empire"
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 android:textStyle="bold" />
         </LinearLayout>
 
+
+        <EditText
+            android:id="@+id/searchEditText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search..."
+            android:visibility="gone" />
+
     </RelativeLayout>
+
+
     <LinearLayout
         android:id="@+id/linearLayout"
         android:layout_width="match_parent"
@@ -56,15 +67,14 @@
         tools:layout_editor_absoluteX="16dp">
 
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcyMatchlist"
+            android:id="@+id/rcyRound"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="10"
-            tools:listitem="@layout/item_matchlist" />
+            tools:listitem="@layout/item_round" />
     </LinearLayout>
-
 
 
     <com.google.android.material.bottomnavigation.BottomNavigationView

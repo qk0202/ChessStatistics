@@ -6,7 +6,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/bg_home">
+    android:background="@drawable/bg_home"
+    tools:context=".Controler.Profile.ProfiledetailActivity">
     <RelativeLayout
         android:id="@+id/rltToolbar"
         android:layout_width="match_parent"
@@ -16,87 +17,69 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/imgApp"
+            android:id="@+id/icReturn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerVertical="true"
-            android:src="@drawable/ic_app" />
+            android:src="@drawable/ic_return" />
+
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="12dp"
-            android:layout_toEndOf="@id/imgApp"
+            android:layout_marginStart="25dp"
+            android:layout_toEndOf="@id/icReturn"
             android:orientation="vertical">
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Profile"
+                android:text="Profile Detail"
                 android:textColor="@color/white"
                 android:textSize="28sp"
                 android:textStyle="bold" />
-            />
         </LinearLayout>
 
 
-        <RelativeLayout
+        <EditText
+            android:id="@+id/searchEditText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            >
+            android:hint="Search..."
+            android:visibility="gone" />
 
-            <EditText
-                android:id="@+id/editTextSearch"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:textColor="#E6D106"
-                android:textStyle="bold"
-                android:visibility="gone"
-                android:layout_marginLeft="50dp"
-                android:textSize="20sp"
-                android:layout_marginTop="50dp"
-                android:layout_toLeftOf="@id/btnSearch"
-                android:layout_alignParentStart="true"/>
-
-            <Button
-                android:id="@+id/btnSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:text="Search"
-                android:visibility="gone" />
-
-            <ImageView
-                android:id="@+id/imageViewSearch"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:src="@drawable/ic_search"
-                android:onClick="onSearchIconClick" />
-        </RelativeLayout>
     </RelativeLayout>
 
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rcyIdPlayer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
+        android:layout_marginTop="12dp"
+        android:orientation="horizontal"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        app:layout_constraintTop_toBottomOf="@id/rltToolbar"
+        tools:layout_editor_absoluteX="16dp"
+        tools:listitem="@layout/item_id_player_profile" />
+
     <LinearLayout
-        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_marginHorizontal="16dp"
         android:layout_marginTop="16dp"
-        android:background="@drawable/bg_bottom_rcy_home"
-        android:orientation="vertical"
+        android:layout_marginHorizontal="16dp"
+        android:background="@drawable/bg_profile"
         app:layout_constraintBottom_toTopOf="@id/bottom_nav"
-        app:layout_constraintTop_toBottomOf="@id/rltToolbar"
-        tools:layout_editor_absoluteX="16dp">
-
+        app:layout_constraintTop_toBottomOf="@id/rcyIdPlayer"
+        android:orientation="vertical">
         <androidx.recyclerview.widget.RecyclerView
-            android:id="@+id/rcyPlayer"
+            android:id="@+id/rcyProfileChess"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="16dp"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:itemCount="10"
-            tools:listitem="@layout/item_id_player_profile" />
+            android:layout_marginTop="12dp"
+            tools:listitem="@layout/item_profile_chess" />
+
     </LinearLayout>
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"

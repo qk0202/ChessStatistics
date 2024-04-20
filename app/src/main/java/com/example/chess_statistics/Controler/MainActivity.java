@@ -41,12 +41,11 @@ public class MainActivity extends AppCompatActivity {
         String strPassword = editPassword.getText().toString().trim();
         User user = new User(strUsername, strPassword);
         if(user.isValidEmail() && user.isVaildPassword()) {
-            Toast.makeText(this, "Chinh Xac", Toast.LENGTH_SHORT).show();
             Intent intent = new Intent(MainActivity.this, FragmentActivity.class);
             startActivity(intent);
         }
         else {
-            Toast.makeText(this, "Khong chinh xac", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Email PassWord Fail", Toast.LENGTH_SHORT).show();
         }
     }
 }

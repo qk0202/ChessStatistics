@@ -27,15 +27,15 @@
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imgAvatar"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="50dp"
+            android:layout_height="61dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginBottom="5dp"
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/img_sample"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toEndOf="@id/tvRank"
-            android:layout_marginBottom="5dp"
-            android:layout_marginStart="20dp"
             app:layout_constraintTop_toTopOf="parent" />
 
 
