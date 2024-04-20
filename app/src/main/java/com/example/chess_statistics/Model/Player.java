@@ -4,13 +4,18 @@ public class Player {
     private int id;
     private String name;
     private int point;
-    private String pref;
-
+    private String type;
+    private byte[] flag;
+    private byte[] image;
+    private int rank;
+    private int win;
+    private int lost;
     // Constructor
     public Player() {
     }
 
     // Getter and setter methods
+
     public int getId() {
         return id;
     }
@@ -27,20 +32,60 @@ public class Player {
         this.name = name;
     }
 
-    public int getPoint() {return point;}
+    public int getPoint() {
+        return point;
+    }
 
-    public void getPoint(int score) {
+    public void setPoint(int point) {
         this.point = point;
     }
 
-    public String getPref() {
-        return pref;
+    public String getType() {
+        return type;
     }
 
-    public void setPref(String pref) {
-        this.pref = pref;
+    public void setType(String type) {
+        this.type = type;
     }
 
-    public void setPoint(int anInt) {
+    public byte[] getFlag() {
+        return flag;
     }
+
+    public void setFlag(byte[] flag) {
+        this.flag = flag;
+    }
+
+    public byte[] getImage() {
+        return image;
+    }
+
+    public void setImage(byte[] image) {
+        this.image = image;
+    }
+
+    public int getRank() {
+        return rank;
+    }
+
+    public void setRank(int rank) {
+        this.rank = rank;
+    }
+
+    public int getWin() {
+        return win;
+    }
+
+    public void setWin(int win) {
+        this.win = win;
+    }
+
+    public int getLost() {
+        return lost;
+    }
+
+    public void setLost(int lost) {
+        this.lost = lost;
+    }
+
 }

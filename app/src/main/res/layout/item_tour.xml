@@ -20,7 +20,7 @@
             android:background="@drawable/bg_tour">
 
             <TextView
-                android:id="@+id/idNameTour"
+                android:id="@+id/nameTour"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:text="Chess VietNamOpen Tourments"
@@ -29,7 +29,7 @@
                 android:paddingTop="10dp"/>
 
             <ImageView
-                android:id="@+id/imgTour"
+                android:id="@+id/avtTour"
                 android:layout_width="match_parent"
                 android:layout_height="220dp"
                 android:src="@drawable/bg_tour1"

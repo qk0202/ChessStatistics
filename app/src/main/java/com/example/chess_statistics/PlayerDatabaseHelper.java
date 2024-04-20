@@ -57,7 +57,7 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, player.getName());
         values.put(COLUMN_POINT, player.getPoint());
-        values.put(COLUMN_PREF, player.getPref());
+        values.put(COLUMN_PREF, player.getType());
 
         // Chèn hàng mới
         db.insert(TABLE_PLAYERS, null, values);
@@ -71,7 +71,7 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
         ContentValues values = new ContentValues();
         values.put(COLUMN_NAME, player.getName());
         values.put(COLUMN_POINT, player.getPoint());
-        values.put(COLUMN_PREF, player.getPref());
+        values.put(COLUMN_PREF, player.getType());
 
         // Cập nhật hàng
         db.update(TABLE_PLAYERS, values, COLUMN_ID + " = ?",
@@ -103,7 +103,7 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
                 player.setId(Integer.parseInt(cursor.getString(0)));
                 player.setName(cursor.getString(1));
                 player.setPoint(cursor.getInt(2));
-                player.setPref(cursor.getString(3));
+                player.setType(cursor.getString(3));
                 playersList.add(player);
             } while (cursor.moveToNext());
         }
