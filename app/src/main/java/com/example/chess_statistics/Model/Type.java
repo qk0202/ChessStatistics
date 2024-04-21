@@ -8,6 +8,7 @@ public class Type {
     private String name;
     private ArrayList<Player> players;
 
+    public  Type(){}
     public Type(Integer id, String name, ArrayList<Player> players) {
         this.id = id;
         this.name = name;

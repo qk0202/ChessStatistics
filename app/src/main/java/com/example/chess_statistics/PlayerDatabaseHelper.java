@@ -7,6 +7,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.example.chess_statistics.Model.Player;
+import com.example.chess_statistics.Model.Tourment;
+import com.example.chess_statistics.Model.Type;
+import com.google.gson.Gson;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -125,5 +129,58 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return playersList;
+    }
+
+    public ArrayList<Type> getAllType() {
+        ArrayList<Type> typeArrayList = new ArrayList<>();
+
+        String selectQuery = "SELECT  * FROM " + "Type";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Duyệt qua tất cả các hàng và thêm vào danh sách
+        if (cursor.moveToFirst()) {
+            do {
+                Type type = new Type();
+                type.setId(Integer.parseInt(cursor.getString(0)));
+                type.setName(cursor.getString(1));
+                String playerJson = cursor.getString(2);
+                ArrayList<Player> players = new Gson().fromJson(playerJson, new TypeToken<ArrayList<Player>>() {}.getType());
+                type.setPlayers(players);
+                typeArrayList.add(type);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return typeArrayList;
+    }
+
+
+    public ArrayList<Tourment> tournament() {
+        ArrayList<Tourment> typeArrayList = new ArrayList<>();
+
+        String selectQuery = "SELECT  * FROM " + "Tournament";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // Duyệt qua tất cả các hàng và thêm vào danh sách
+        if (cursor.moveToFirst()) {
+            do {
+                Tourment tourment = new Tourment();
+                tourment.setId(Integer.parseInt(cursor.getString(0)));
+                tourment.setNameTour(cursor.getString(1));
+                tourment.setAvtTour(cursor.getString(2));
+                typeArrayList.add(tourment);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return typeArrayList;
     }
 }

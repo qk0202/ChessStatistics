@@ -3,4 +3,9 @@
     <style name="AppStyleBottomNavigation" parent="Widget.MaterialComponents.BottomNavigationView">
         <item name="android:background">@color/white</item>
     </style>
+
+    <style name="ShapeAppearance.CircularBorder16dp" parent="">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSize">16dp</item>
+    </style>
 </resources>

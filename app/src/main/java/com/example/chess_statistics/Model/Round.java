@@ -6,6 +6,8 @@ public class Round {
     private String nameRound;
     private String date;
 
+    private int id_tour;
+
     public Round() {
     }
 
@@ -31,5 +33,13 @@ public class Round {
 
     public void setDate(String date) {
         this.date = date;
+    }
+
+    public int getId_tour() {
+        return id_tour;
+    }
+
+    public void setId_tour(int id_tour) {
+        this.id_tour = id_tour;
     }
 }
