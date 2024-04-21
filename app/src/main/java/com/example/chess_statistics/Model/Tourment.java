@@ -4,9 +4,16 @@ public class Tourment {
     private int id;
     private String nameTour;
     private String ipTour;
-    private byte[] avtTour;
+    private String avtTour;
 
     public Tourment() {
+    }
+
+    public Tourment(int id, String nameTour, String ipTour, String avtTour) {
+        this.id = id;
+        this.nameTour = nameTour;
+        this.ipTour = ipTour;
+        this.avtTour = avtTour;
     }
 
     public int getId() {
@@ -33,11 +40,11 @@ public class Tourment {
         this.ipTour = ipTour;
     }
 
-    public byte[] getAvtTour() {
+    public String getAvtTour() {
         return avtTour;
     }
 
-    public void setAvtTour(byte[] avtTour) {
+    public void setAvtTour(String avtTour) {
         this.avtTour = avtTour;
     }
 }

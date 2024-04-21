@@ -81,7 +81,7 @@ public class FragmentActivity extends AppCompatActivity {
     private ArrayList<Type> arrayList(){
         ArrayList<Type> a = new ArrayList<Type>();
         a.add(new Type(1,"Blitz",playerDatabaseHelper.getAllPlayers()));
-        a.add(new Type(2,"Class",null));
+        a.add(new Type(2,"Class",playerDatabaseHelper.getAllPlayers()));
         return  a;
     }
 }
