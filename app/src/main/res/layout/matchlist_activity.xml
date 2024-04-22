@@ -78,6 +78,7 @@
         app:itemIconSize="23dp"
         app:itemIconTint="@color/selector"
         app:itemTextColor="@color/selector"
+        android:visibility="gone"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/home_menu" />

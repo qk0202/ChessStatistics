@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.example.chess_statistics.adapter.ViewPagerAdapter;
+import com.example.chess_statistics.model.Tourment;
 import com.example.chess_statistics.model.Type;
 import com.example.chess_statistics.PlayerDatabaseHelper;
 import com.example.chess_statistics.R;
@@ -29,7 +30,7 @@ public class FActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         bottomNavigationView = findViewById(R.id.bottom_nav);
         playerDatabaseHelper = new PlayerDatabaseHelper(this);
-        ViewPagerAdapter Adapter = new ViewPagerAdapter(getSupportFragmentManager(), 3, arrayList());
+        ViewPagerAdapter Adapter = new ViewPagerAdapter(getSupportFragmentManager(), 3, arrayList(),getListTours());
 
 
         viewPager.setAdapter(Adapter);
@@ -81,5 +82,9 @@ public class FActivity extends AppCompatActivity {
         a.add(new Type(2,"Classical",playerDatabaseHelper.getAllPlayers()));
         a.add(new Type(3,"Corr",playerDatabaseHelper.getAllPlayers()));
         return  a;
+    }
+
+    private ArrayList<Tourment> getListTours(){
+        return playerDatabaseHelper.tournament();
     }
 }

@@ -8,6 +8,8 @@ import androidx.fragment.app.FragmentStatePagerAdapter;
 import com.example.chess_statistics.fragment.FragmentProfile;
 import com.example.chess_statistics.fragment.FragmentRating;
 import com.example.chess_statistics.fragment.FragmentTour;
+import com.example.chess_statistics.model.Round;
+import com.example.chess_statistics.model.Tourment;
 import com.example.chess_statistics.model.Type;
 
 import java.util.ArrayList;
@@ -15,9 +17,11 @@ import java.util.ArrayList;
 public class ViewPagerAdapter extends FragmentStatePagerAdapter {
 
     ArrayList<Type> types;
-    public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior,ArrayList<Type> types) {
+    ArrayList<Tourment> tourments;
+    public ViewPagerAdapter(@NonNull FragmentManager fm, int behavior,ArrayList<Type> types,ArrayList<Tourment> tourments) {
         super(fm, behavior);
         this.types = types;
+        this.tourments = tourments;
     }
 
     @NonNull
@@ -25,7 +29,7 @@ public class ViewPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         switch (position){
             case 0: return new FragmentRating(types);
-            case 1: return new FragmentTour();
+            case 1: return new FragmentTour(tourments);
             case 2: return new FragmentProfile();
             default: return new FragmentRating(types);
         }

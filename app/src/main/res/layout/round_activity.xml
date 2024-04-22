@@ -7,8 +7,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg_home"
-    tools:context=".controler.tour.RoundActivity"
-    >
+    tools:context=".controler.tour.RoundActivity">
 
     <RelativeLayout
         android:id="@+id/rltToolbar"
@@ -86,6 +85,7 @@
         android:padding="5dp"
         app:itemIconSize="23dp"
         app:itemIconTint="@color/selector"
+        android:visibility="gone"
         app:itemTextColor="@color/selector"
         app:labelVisibilityMode="labeled"
         app:layout_constraintBottom_toBottomOf="parent"

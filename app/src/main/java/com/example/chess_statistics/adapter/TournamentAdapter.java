@@ -20,8 +20,11 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.To
 
     private List<Tourment> tourMs;
 
-    public TournamentAdapter(List<Tourment> tours) {
+    private OnClickItemTours onClickItemTours;
+
+    public TournamentAdapter(List<Tourment> tours,OnClickItemTours onClickItemTours) {
         this.tourMs = tours;
+        this.onClickItemTours = onClickItemTours;
     }
 
     @NonNull
@@ -40,7 +43,7 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.To
         holder.ln.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onClickItemTours.clickItemTours(tours);
             }
         });
     }
@@ -66,5 +69,9 @@ public class TournamentAdapter extends RecyclerView.Adapter<TournamentAdapter.To
             imageView = itemView.findViewById(R.id.imgBg);
             ln = itemView.findViewById(R.id.lnItemTour);
         }
+    }
+
+    public interface OnClickItemTours{
+        void clickItemTours(Tourment tourment);
     }
 }

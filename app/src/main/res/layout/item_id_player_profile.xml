@@ -32,6 +32,7 @@
             android:adjustViewBounds="true"
             android:scaleType="centerCrop"
             android:src="@drawable/img_sample"
+            app:shapeAppearanceOverlay="@style/ShapeAppearance.CircularBorder50"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.12"
