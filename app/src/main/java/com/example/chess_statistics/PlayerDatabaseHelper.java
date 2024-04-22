@@ -1,17 +1,21 @@
 package com.example.chess_statistics;
 
+import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.chess_statistics.model.MatchList;
 import com.example.chess_statistics.model.Player;
+import com.example.chess_statistics.model.Round;
 import com.example.chess_statistics.model.Tourment;
 import com.example.chess_statistics.model.Type;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
+import java.sql.PreparedStatement;
 import java.util.ArrayList;
 
 public class PlayerDatabaseHelper extends SQLiteOpenHelper {
@@ -22,6 +26,7 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
 
     // Tên bảng và các cột
     private static final String TABLE_PLAYERS = "Player";
+    private static final String TABLE_TOUR = "tournaments";
     private static final String COLUMN_ID = "id";
     private static final String COLUMN_NAME = "name";
 
@@ -46,14 +51,24 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
             + COLUMN_LOST + "INTEGER"
             + ")";
 
+    private static final String CREATE_TOUR_TABLE = "CREATE TABLE if not exists " + TABLE_TOUR + "("
+            + "tour_id" + " INTEGER PRIMARY KEY,"
+            + "name" + "STRING,"
+            + "ipTour" + "STRING,"
+            + "avtTour" + " STRING"
+            + ")";
+
     public PlayerDatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
+    @SuppressLint("SQLiteString")
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Tạo bảng players
         db.execSQL(CREATE_PLAYERS_TABLE);
+        db.execSQL(CREATE_TOUR_TABLE);
+
     }
 
     @Override
@@ -161,7 +176,7 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
     public ArrayList<Tourment> tournament() {
         ArrayList<Tourment> typeArrayList = new ArrayList<>();
 
-        String selectQuery = "SELECT  * FROM " + "TABLE_TOURNAMENTS";
+        String selectQuery = "SELECT  * FROM " + "tournaments";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -182,5 +197,62 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
         db.close();
 
         return typeArrayList;
+    }
+
+    public ArrayList<Round> filterRound(String idTour){
+
+        ArrayList<Round> rounds = new ArrayList<>();
+        String selectQuery = "SELECT * FROM rounds WHERE tour_id = ? " ;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{idTour});
+
+        // Duyệt qua tất cả các hàng và thêm vào danh sách
+        if (cursor.moveToFirst()) {
+            do {
+                Round round = new Round();
+                round.setId(Integer.parseInt(cursor.getString(0)));
+                round.setName_round(cursor.getString(1));
+                round.setStartDate(cursor.getString(2));
+                round.setEndDate(cursor.getString(3));
+                rounds.add(round);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return rounds;
+
+    }
+
+    public ArrayList<MatchList> filterMatchList(String idRound){
+
+        ArrayList<MatchList> matchLists = new ArrayList<>();
+        String selectQuery = "SELECT * FROM matchlists WHERE round_id = ? " ;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery,new String[]{idRound});
+
+        // Duyệt qua tất cả các hàng và thêm vào danh sách
+        if (cursor.moveToFirst()) {
+            do {
+                MatchList matchList = new MatchList();
+                matchList.setMatchlist_id(Integer.parseInt(cursor.getString(0)));
+                matchList.setPlayer1_id(Integer.parseInt(cursor.getString(1)));
+                matchList.setPlayer2_id(Integer.parseInt(cursor.getString(2)));
+                matchList.setFlag1_id(Integer.parseInt(cursor.getString(3)));
+                matchList.setFlag2_id(Integer.parseInt(cursor.getString(4)));
+                matchList.setResult1(Integer.parseInt(cursor.getString(5)));
+                matchList.setResult2(Integer.parseInt(cursor.getString(6)));
+                matchLists.add(matchList);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return matchLists;
+
     }
 }

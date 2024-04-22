@@ -1,5 +1,6 @@
 package com.example.chess_statistics.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,11 +13,18 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chess_statistics.adapter.TournamentAdapter;
 import com.example.chess_statistics.R;
+import com.example.chess_statistics.controler.MainActivity;
+import com.example.chess_statistics.controler.tour.RoundActivity;
+import com.example.chess_statistics.model.Tourment;
 
-public class FragmentTour extends Fragment {
+import java.util.ArrayList;
+
+public class FragmentTour extends Fragment implements TournamentAdapter.OnClickItemTours {
 
     private TournamentAdapter tournamentAdapter;
-    public FragmentTour() {
+    private ArrayList<Tourment> tourments;
+    public FragmentTour(ArrayList<Tourment> tourments) {
+        this.tourments = tourments;
     }
 
     @Nullable
@@ -27,12 +35,18 @@ public class FragmentTour extends Fragment {
 
         //top ten
         RecyclerView recyclerView = view.findViewById(R.id.rcyTour);
-        //tournamentAdapter = new TournamentAdapter();
+        tournamentAdapter = new TournamentAdapter(tourments,this);
         recyclerView.setAdapter(tournamentAdapter);
-
 
         return view;
 
 
+    }
+
+    @Override
+    public void clickItemTours(Tourment tourment) {
+        Intent mIntent = new Intent(getContext(), RoundActivity.class);
+        mIntent.putExtra("idTour", tourment.getTour_id());
+        getActivity().startActivity(mIntent);
     }
 }

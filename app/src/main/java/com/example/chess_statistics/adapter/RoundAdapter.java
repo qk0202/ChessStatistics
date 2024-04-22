@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.chess_statistics.model.Round;
 import com.example.chess_statistics.R;
+import com.example.chess_statistics.model.Tourment;
 
 import java.util.List;
 
@@ -18,9 +19,11 @@ public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.RoundViewHol
 
 
     private List<Round> rounds;
+    public OnClickItemRound onClickItemRound;
 
-    public RoundAdapter(List<Round> rounds) {
+    public RoundAdapter(List<Round> rounds,OnClickItemRound onClickItemRound) {
         this.rounds = rounds;
+        this.onClickItemRound = onClickItemRound;
     }
 
     @NonNull
@@ -38,7 +41,7 @@ public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.RoundViewHol
         holder.ctl.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                onClickItemRound.clickItemRound(round);
             }
         });
     }
@@ -61,5 +64,10 @@ public class RoundAdapter extends RecyclerView.Adapter<RoundAdapter.RoundViewHol
             tvDate = itemView.findViewById(R.id.date);
             ctl = itemView.findViewById(R.id.ctlRound);
         }
+    }
+
+
+    public interface OnClickItemRound{
+        void clickItemRound(Round round);
     }
 }
