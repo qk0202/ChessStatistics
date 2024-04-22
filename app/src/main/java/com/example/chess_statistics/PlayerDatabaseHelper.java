@@ -17,7 +17,7 @@ import java.util.ArrayList;
 public class PlayerDatabaseHelper extends SQLiteOpenHelper {
 
     // Tên cơ sở dữ liệu và phiên bản
-    private static final String DATABASE_NAME = "players_database";
+    private static final String DATABASE_NAME = "players";
     private static final int DATABASE_VERSION = 1;
 
     // Tên bảng và các cột
@@ -161,7 +161,7 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
     public ArrayList<Tourment> tournament() {
         ArrayList<Tourment> typeArrayList = new ArrayList<>();
 
-        String selectQuery = "SELECT  * FROM " + "Tournament";
+        String selectQuery = "SELECT  * FROM " + "TABLE_TOURNAMENTS";
 
         SQLiteDatabase db = this.getWritableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, null);
@@ -170,9 +170,10 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Tourment tourment = new Tourment();
-                tourment.setId(Integer.parseInt(cursor.getString(0)));
+                tourment.setTour_id(Integer.parseInt(cursor.getString(0)));
                 tourment.setNameTour(cursor.getString(1));
-                tourment.setAvtTour(cursor.getString(2));
+                tourment.setIpTour(cursor.getString(2));
+                tourment.setAvtTour(cursor.getString(3));
                 typeArrayList.add(tourment);
             } while (cursor.moveToNext());
         }

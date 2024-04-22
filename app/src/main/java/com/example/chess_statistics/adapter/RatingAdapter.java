@@ -60,6 +60,7 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.MyViewHold
         holder.tvName.setText(item.getName());
         holder.tvPoint.setText(String.valueOf(item.getPoint()));
         Glide.with(context).load(item.getAvatar()).into(holder.avatar);
+        Glide.with(context).load(item.getFlag()).into(holder.flag);
         holder.constraintLayout.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -80,13 +81,14 @@ public class RatingAdapter extends RecyclerView.Adapter<RatingAdapter.MyViewHold
         TextView tvName;
         TextView tvPoint;
         ImageView avatar;
+        ImageView flag;
         ConstraintLayout constraintLayout;
 
         ImageView imgRank;
 
         public MyViewHolder(View itemView) {
             super(itemView);
-
+            flag = itemView.findViewById(R.id.flag);
             tvRank = (TextView) itemView.findViewById(R.id.tvRank);
             tvName = (TextView) itemView.findViewById(R.id.tvName);
             tvPoint = (TextView) itemView.findViewById(R.id.tvPoint);
