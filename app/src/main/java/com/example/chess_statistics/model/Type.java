@@ -6,13 +6,11 @@ public class Type {
 
     private Integer id;
     private String name;
-    private ArrayList<Player> players;
 
     public  Type(){}
-    public Type(Integer id, String name, ArrayList<Player> players) {
+    public Type(Integer id, String name) {
         this.id = id;
         this.name = name;
-        this.players = players;
     }
 
 
@@ -32,11 +30,4 @@ public class Type {
         this.name = name;
     }
 
-    public ArrayList<Player> getPlayers() {
-        return players;
-    }
-
-    public void setPlayers(ArrayList<Player> players) {
-        this.players = players;
-    }
 }
