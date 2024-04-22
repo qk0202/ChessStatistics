@@ -17,6 +17,7 @@ import com.google.gson.reflect.TypeToken;
 
 import java.sql.PreparedStatement;
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class PlayerDatabaseHelper extends SQLiteOpenHelper {
 
@@ -135,6 +136,8 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
                 player.setRank(cursor.getInt(5));
                 player.setWin(cursor.getInt(6));
                 player.setLost(cursor.getInt(7));
+                player.setPoint_classical(cursor.getInt(8));
+                player.setPoint_corr(cursor.getInt(9));
                 playersList.add(player);
             } while (cursor.moveToNext());
         }
@@ -159,9 +162,6 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
                 Type type = new Type();
                 type.setId(Integer.parseInt(cursor.getString(0)));
                 type.setName(cursor.getString(1));
-                String playerJson = cursor.getString(2);
-                ArrayList<Player> players = new Gson().fromJson(playerJson, new TypeToken<ArrayList<Player>>() {}.getType());
-                type.setPlayers(players);
                 typeArrayList.add(type);
             } while (cursor.moveToNext());
         }
@@ -172,6 +172,60 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
         return typeArrayList;
     }
 
+
+    public ArrayList<Player> getPlayerDependentType(String typeId) {
+        ArrayList<Player> playersList = new ArrayList<>();
+        String sql = "";
+        if (Objects.equals(typeId, "1")) {
+            sql = " SELECT * FROM player p " +
+                    " JOIN TypePLayer pt ON p.id = pt.id " +
+                    " JOIN type t ON pt.id_type = t.id_type " +
+                    "WHERE t.id_type = ? " +
+                    "ORDER BY p.point_classical DESC " +
+                    "LIMIT 10 ";
+        } else if (Objects.equals(typeId, "2")) {
+            sql = " SELECT * FROM player p " +
+                    " JOIN TypePLayer pt ON p.id = pt.id " +
+                    " JOIN type t ON pt.id_type = t.id_type " +
+                    "WHERE t.id_type = ? " +
+                    "ORDER BY p.point_corr DESC " +
+                    "LIMIT 10 ";
+        } else {
+            sql = " SELECT * FROM player p " +
+                    " JOIN TypePLayer pt ON p.id = pt.id " +
+                    " JOIN type t ON pt.id_type = t.id_type " +
+                    "WHERE t.id_type = ? " +
+                    "ORDER BY p.point_blitz DESC " +
+                    "LIMIT 10 ";
+        }
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(sql, new String[]{typeId});
+
+        // Duyệt qua tất cả các hàng và thêm vào danh sách
+        if (cursor.moveToFirst()) {
+            do {
+                Player player = new Player();
+                player.setId(Integer.parseInt(cursor.getString(0)));
+                player.setName(cursor.getString(1));
+                player.setPoint(cursor.getInt(2));
+                player.setAvatar(cursor.getString(3));
+                player.setFlag(cursor.getString(4));
+                player.setRank(cursor.getInt(5));
+                player.setWin(cursor.getInt(6));
+                player.setLost(cursor.getInt(7));
+                player.setPoint_classical(cursor.getInt(8));
+                player.setPoint_corr(cursor.getInt(9));
+                playersList.add(player);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return playersList;
+
+    }
 
     public ArrayList<Tourment> tournament() {
         ArrayList<Tourment> typeArrayList = new ArrayList<>();
@@ -199,10 +253,10 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
         return typeArrayList;
     }
 
-    public ArrayList<Round> filterRound(String idTour){
+    public ArrayList<Round> filterRound(String idTour) {
 
         ArrayList<Round> rounds = new ArrayList<>();
-        String selectQuery = "SELECT * FROM rounds WHERE tour_id = ? " ;
+        String selectQuery = "SELECT * FROM rounds WHERE tour_id = ? ";
 
         SQLiteDatabase db = this.getReadableDatabase();
         Cursor cursor = db.rawQuery(selectQuery, new String[]{idTour});
@@ -226,13 +280,13 @@ public class PlayerDatabaseHelper extends SQLiteOpenHelper {
 
     }
 
-    public ArrayList<MatchList> filterMatchList(String idRound){
+    public ArrayList<MatchList> filterMatchList(String idRound) {
 
         ArrayList<MatchList> matchLists = new ArrayList<>();
-        String selectQuery = "SELECT * FROM matchlists WHERE round_id = ? " ;
+        String selectQuery = "SELECT * FROM matchlists WHERE round_id = ? ";
 
         SQLiteDatabase db = this.getWritableDatabase();
-        Cursor cursor = db.rawQuery(selectQuery,new String[]{idRound});
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{idRound});
 
         // Duyệt qua tất cả các hàng và thêm vào danh sách
         if (cursor.moveToFirst()) {

@@ -30,7 +30,8 @@ public class FActivity extends AppCompatActivity {
         viewPager = findViewById(R.id.viewPager);
         bottomNavigationView = findViewById(R.id.bottom_nav);
         playerDatabaseHelper = new PlayerDatabaseHelper(this);
-        ViewPagerAdapter Adapter = new ViewPagerAdapter(getSupportFragmentManager(), 3, arrayList(),getListTours());
+        ViewPagerAdapter Adapter = new ViewPagerAdapter(getSupportFragmentManager(), 3,
+                playerDatabaseHelper.getAllType(), getListTours(),playerDatabaseHelper);
 
 
         viewPager.setAdapter(Adapter);
@@ -76,15 +77,8 @@ public class FActivity extends AppCompatActivity {
         });
 
     }
-    private ArrayList<Type> arrayList(){
-        ArrayList<Type> a = new ArrayList<Type>();
-        a.add(new Type(1,"Blitz",playerDatabaseHelper.getAllPlayers()));
-        a.add(new Type(2,"Classical",playerDatabaseHelper.getAllPlayers()));
-        a.add(new Type(3,"Corr",playerDatabaseHelper.getAllPlayers()));
-        return  a;
-    }
 
-    private ArrayList<Tourment> getListTours(){
+    private ArrayList<Tourment> getListTours() {
         return playerDatabaseHelper.tournament();
     }
 }

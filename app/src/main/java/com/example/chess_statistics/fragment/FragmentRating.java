@@ -11,21 +11,27 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.chess_statistics.PlayerDatabaseHelper;
 import com.example.chess_statistics.adapter.RatingAdapter;
 import com.example.chess_statistics.adapter.TypeAdapter;
 import com.example.chess_statistics.model.Player;
 import com.example.chess_statistics.model.Type;
 import com.example.chess_statistics.R;
+import com.example.chess_statistics.model.User;
 
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
-public class FragmentRating extends Fragment implements RatingAdapter.OnClickItemPlayer , TypeAdapter.OnClickItemType  {
+public class FragmentRating extends Fragment implements RatingAdapter.OnClickItemPlayer, TypeAdapter.OnClickItemType {
 
     private RatingAdapter ratingAdapter;
     private ArrayList<Type> types;
+    private PlayerDatabaseHelper playerDatabaseHelper;
 
-    public FragmentRating(ArrayList<Type> types) {
+    public FragmentRating(ArrayList<Type> types, PlayerDatabaseHelper playerDatabaseHelper) {
         this.types = types;
+        this.playerDatabaseHelper = playerDatabaseHelper;
     }
 
     @Nullable
@@ -35,14 +41,13 @@ public class FragmentRating extends Fragment implements RatingAdapter.OnClickIte
 
         //list type
         RecyclerView tcyType = view.findViewById(R.id.rcyTypeChess);
-        TypeAdapter typeAdapter = new TypeAdapter(getContext(),types,this);
+        TypeAdapter typeAdapter = new TypeAdapter(getContext(), types, this);
         tcyType.setAdapter(typeAdapter);
 
         //top ten
         RecyclerView recyclerView = view.findViewById(R.id.rcyPlayer);
-        ratingAdapter = new RatingAdapter(getContext(), types.get(0).getPlayers(),this);
+        ratingAdapter = new RatingAdapter(getContext(), playerDatabaseHelper.getPlayerDependentType("1"), this);
         recyclerView.setAdapter(ratingAdapter);
-
 
 
         return view;
@@ -55,11 +60,13 @@ public class FragmentRating extends Fragment implements RatingAdapter.OnClickIte
 
     @Override
     public void ClickItem(Player player) {
-        Log.e("huanhuan",String.valueOf(player.getId()));
+        Log.e("huanhuan", String.valueOf(player.getId()));
     }
 
     @Override
     public void clickItemType(Type type) {
-        ratingAdapter.updateData(type.getPlayers());
+        ArrayList<Player> players = playerDatabaseHelper.getPlayerDependentType(type.getId().toString());
+        ratingAdapter.updateData(players);
     }
+
 }

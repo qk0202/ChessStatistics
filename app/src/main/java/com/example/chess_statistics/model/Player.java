@@ -8,15 +8,19 @@ public class Player {
     private String avatar;
 
     private String flag;
-    private TypeBlitz typeBlitz;
-
-    private TypeCorr typeCorr;
-    private TypeClassical typeClassical;
     private int rank;
     private int win;
     private int lost;
 
-    public  Player(){}
+    private int point_classical;
+
+    private int point_corr;
+
+    private int point_blitz;
+
+    public Player() {
+    }
+
     // Constructor
     public Player(int id, String name, int point, String avatar, String flag, int rank, int win, int lost) {
         this.id = id;
@@ -97,27 +101,27 @@ public class Player {
         this.flag = flag;
     }
 
-    public TypeBlitz getTypeBlitz() {
-        return typeBlitz;
+    public int getPoint_classical() {
+        return point_classical;
     }
 
-    public void setTypeBlitz(TypeBlitz typeBlitz) {
-        this.typeBlitz = typeBlitz;
+    public void setPoint_classical(int point_classical) {
+        this.point_classical = point_classical;
     }
 
-    public TypeCorr getTypeCorr() {
-        return typeCorr;
+    public int getPoint_corr() {
+        return point_corr;
     }
 
-    public void setTypeCorr(TypeCorr typeCorr) {
-        this.typeCorr = typeCorr;
+    public void setPoint_corr(int point_corr) {
+        this.point_corr = point_corr;
     }
 
-    public TypeClassical getTypeClassical() {
-        return typeClassical;
+    public int getPoint_blitz() {
+        return point_blitz;
     }
 
-    public void setTypeClassical(TypeClassical typeClassical) {
-        this.typeClassical = typeClassical;
+    public void setPoint_blitz(int point_blitz) {
+        this.point_blitz = point_blitz;
     }
 }
