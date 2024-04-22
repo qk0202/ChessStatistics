@@ -12,7 +12,7 @@
         android:theme="@style/Theme.ChessStatistics"
         tools:targetApi="31">
         <activity
-            android:name=".Controler.MainActivity"
+            android:name=".controler.MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,7 +20,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controler.FragmentActivity"
+            android:name=".controler.FActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.chess_statistics.ACTION_VIEW" />
@@ -28,7 +28,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controler.Profile.ResultsearchActivity"
+            android:name=".controler.profile.ResultsearchActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.chess_statistics.ACTION_VIEW" />
@@ -36,7 +36,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controler.Profile.ProfiledetailActivity"
+            android:name=".controler.profile.ProfiledetailActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.chess_statistics.ACTION_VIEW" />
@@ -44,7 +44,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controler.Tour.RoundActivity"
+            android:name=".controler.tour.RoundActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.chess_statistics.ACTION_VIEW" />
@@ -52,7 +52,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Controler.Tour.MatchlistActivity"
+            android:name=".controler.tour.MatchlistActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="com.example.chess_statistics.ACTION_VIEW" />

@@ -6,14 +6,13 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
-import com.example.chess_statistics.Model.Player;
-import com.example.chess_statistics.Model.Tourment;
-import com.example.chess_statistics.Model.Type;
+import com.example.chess_statistics.model.Player;
+import com.example.chess_statistics.model.Tourment;
+import com.example.chess_statistics.model.Type;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class PlayerDatabaseHelper extends SQLiteOpenHelper {
 
